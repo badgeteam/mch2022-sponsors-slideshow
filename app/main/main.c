@@ -16,11 +16,6 @@ xQueueHandle buttonQueue;
 
 static const char *TAG = "spon";
 
-#define SPONSOR_1_TEXT "Sponsored by"
-#define SPONSOR_2_TEXT "Sponsored by"
-#define SPONSOR_3_TEXT "Sponsored by"
-#define SPONSOR_4_TEXT "Sponsored by"
-
 extern const uint8_t logo1_adyen_png_start[]        asm("_binary_1_logo_adyen_png_start");
 extern const uint8_t logo1_computest_png_start[]    asm("_binary_1_logo_computest_png_start");
 extern const uint8_t logo1_deloitte_png_start[]     asm("_binary_1_logo_deloitte_png_start");
@@ -103,7 +98,7 @@ void app_main() {
     
     // Show ALL of them.
     for (int i = 0; i < num_logos; i++) {
-        display_logo(start_regions[i], end_regions[i], "Sponsored by");
+        display_logo(start_regions[i], end_regions[i], NULL);
         vTaskDelay(pdMS_TO_TICKS(500));
     }
     
@@ -112,7 +107,7 @@ void app_main() {
     nvs_close(handle);
     
     // Done!
-    pax_background(&buf, 255);
+    pax_background(&buf, -1);
     disp_flush();
     
     esp_restart();
