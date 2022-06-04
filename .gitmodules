@@ -1,0 +1,30 @@
+[submodule "app/components/esp32-component-mch2022-bsp"]
+	path = app/components/mch2022-bsp
+	url = https://github.com/badgeteam/esp32-component-mch2022-bsp
+[submodule "app/components/esp32-component-mch2022-rp2040"]
+	path = app/components/mch2022-rp2040
+	url = https://github.com/badgeteam/esp32-component-mch2022-rp2040
+[submodule "app/components/spi-ili9341"]
+	path = app/components/spi-ili9341
+	url = https://github.com/Nicolai-Electronics/esp32-component-spi-ili9341
+[submodule "app/components/esp32-component-spi-ice40"]
+	path = app/components/spi-ice40
+	url = https://github.com/Nicolai-Electronics/esp32-component-spi-ice40
+[submodule "app/components/bus-i2c"]
+	path = app/components/bus-i2c
+	url = https://github.com/Nicolai-Electronics/esp32-component-bus-i2c
+[submodule "app/components/pax-graphics"]
+	path = app/components/pax-graphics
+	url = https://github.com/robotman2412/pax-graphics
+[submodule "app/components/pax-codecs"]
+	path = app/components/pax-codecs
+	url = https://github.com/robotman2412/pax-codecs
+[submodule "app/components/i2c-bno055"]
+	path = app/components/i2c-bno055
+	url = https://github.com/Nicolai-Electronics/esp32-component-i2c-bno055
+[submodule "esp-idf"]
+	path = esp-idf
+	url = https://github.com/espressif/esp-idf
+[submodule "app/mch2022-sponsors"]
+	path = app/mch2022-sponsors
+	url = https://github.com/badgeteam/mch2022-sponsors/
