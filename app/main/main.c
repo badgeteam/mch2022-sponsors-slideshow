@@ -110,5 +110,7 @@ void app_main() {
     pax_background(&buf, -1);
     disp_flush();
     
+    // Go to launcher.
+    REG_WRITE(RTC_CNTL_STORE0_REG, 0);
     esp_restart();
 }
