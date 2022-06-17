@@ -10,6 +10,8 @@
 #include "nvs_flash.h"
 #include "esp_system.h"
 #include "nvs.h"
+#include "soc/rtc.h"
+#include "soc/rtc_cntl_reg.h"
 
 pax_buf_t buf;
 xQueueHandle buttonQueue;
