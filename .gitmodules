@@ -28,3 +28,6 @@
 [submodule "app/mch2022-sponsors"]
 	path = app/mch2022-sponsors
 	url = https://github.com/badgeteam/mch2022-sponsors/
+[submodule "app/components/ws2812"]
+	path = app/components/ws2812
+	url = https://github.com/badgeteam/esp32-component-ws2812

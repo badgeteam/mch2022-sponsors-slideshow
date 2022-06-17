@@ -12,6 +12,8 @@
 #include "nvs.h"
 #include "soc/rtc.h"
 #include "soc/rtc_cntl_reg.h"
+#include <stdlib.h>
+#include <ws2812.h>
 
 pax_buf_t buf;
 xQueueHandle buttonQueue;
@@ -89,6 +91,11 @@ void app_main() {
     
     // Init GFX.
     pax_buf_init(&buf, NULL, 320, 240, PAX_BUF_16_565RGB);
+    
+    // Try to LEDINAR.
+    uint8_t ledinar[15];
+    memset(ledinar, 255, sizeof(ledinar));
+    esp_err_t res = ws2812_init(GPIO_LED_DATA);
     
     // Init NVS.
     nvs_flash_init();
