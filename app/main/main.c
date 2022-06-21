@@ -202,14 +202,30 @@ const size_t num_event = sizeof(event_start_regions) / sizeof(const void *);
 
 #define IMAGE_TIME pdMS_TO_TICKS(500)
 
+// Updates the display with what's been drawn.
 void disp_flush() {
     ili9341_write(get_ili9341(), buf.buf);
 }
 
+// Draws a single PNG.
 void display_logo(const void *start, const void *end) {
     size_t len = (size_t) end - (size_t) start;
     pax_decode_png_buf(&buf, (void *) start, len, buf.type, CODEC_FLAG_EXISTING);
-    disp_flush();
+}
+
+// Draws a progress bar on the bottom of the screen.
+void display_progress(int part, int total) {
+    // Calculate spacing between dots.
+    float delta = buf.width / (total + 1);
+    // Draw dots.
+    float x     = delta;
+    for (int i = 0; i < total; i++) {
+        // Make the dot darker when it's selected.
+        pax_col_t color = part == i ? 0xff000000 : 0xffa0a0a0;
+        pax_draw_circle(&buf, color, x, buf.height - 10, 4);
+        // Move to the next dot's position.
+        x += delta;
+    }
 }
 
 void app_main() {
@@ -221,13 +237,7 @@ void app_main() {
     // Init GFX.
     pax_buf_init(&buf, NULL, 320, 240, PAX_BUF_16_565RGB);
     
-    // Try to LEDINAR.
-    uint8_t ledinar[15];
-    memset(ledinar, 255, sizeof(ledinar));
-    esp_err_t res = ws2812_init(GPIO_LED_DATA);
-    if (res) ESP_LOGE(TAG, "LED error: %s", esp_err_to_name(res));
-    res = ws2812_send_data(ledinar, sizeof(ledinar));
-    if (res) ESP_LOGE(TAG, "LED error: %s", esp_err_to_name(res));
+    // TODO: Power on LED region and show something on them.
     
     // Init NVS.
     nvs_flash_init();
@@ -240,11 +250,15 @@ void app_main() {
     // Show the badger animation.
     for (int i = 0; i < num_anim; i++) {
         display_logo(anim_start_regions[i], anim_end_regions[i]);
+        disp_flush();
     }
     
     // Show the event sponsors.
     for (int i = 0; i < num_event; i++) {
         display_logo(event_start_regions[i], event_end_regions[i]);
+        // Show a progress bar so people know how long to expect.
+        display_progress(i, num_event);
+        disp_flush();
         vTaskDelay(pdMS_TO_TICKS(500));
     }
     
@@ -252,6 +266,7 @@ void app_main() {
     
     // Set an NVS variable.
     nvs_set_u8(handle, "sponsors", 1);
+    nvs_commit(handle);
     nvs_close(handle);
     
     // Done!
