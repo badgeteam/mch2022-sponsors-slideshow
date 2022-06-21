@@ -13,6 +13,7 @@
 #include "soc/rtc.h"
 #include "soc/rtc_cntl_reg.h"
 #include <stdlib.h>
+#include <string.h>
 #include <ws2812.h>
 
 pax_buf_t buf;
@@ -20,32 +21,41 @@ xQueueHandle buttonQueue;
 
 static const char *TAG = "spon";
 
-extern const uint8_t logo1_adyen_png_start[]        asm("_binary_1_logo_adyen_png_start");
-extern const uint8_t logo1_computest_png_start[]    asm("_binary_1_logo_computest_png_start");
-extern const uint8_t logo1_deloitte_png_start[]     asm("_binary_1_logo_deloitte_png_start");
-extern const uint8_t logo2_mullvad_vpn_png_start[]  asm("_binary_2_logo_mullvad_vpn_png_start");
-extern const uint8_t logo2_secura_png_start[]       asm("_binary_2_logo_secura_png_start");
-extern const uint8_t logo3_stegen_png_start[]       asm("_binary_3_logo_stegen_png_start");
-extern const uint8_t logo3_access42_png_start[]     asm("_binary_3_logo_access42_png_start");
-extern const uint8_t logo3_at_computing_png_start[] asm("_binary_3_logo_at_computing_png_start");
-extern const uint8_t logo3_zerocopter_png_start[]   asm("_binary_3_logo_zerocopter_png_start");
+extern const uint8_t logo1_adyen_png_start[]          asm("_binary_1_logo_adyen_png_start");
+extern const uint8_t logo1_computest_png_start[]      asm("_binary_1_logo_computest_png_start");
+extern const uint8_t logo1_deloitte_png_start[]       asm("_binary_1_logo_deloitte_png_start");
+extern const uint8_t logo1_schubergphilis_png_start[] asm("_binary_1_logo_schubergphilis_png_start");
+extern const uint8_t logo2_mullvad_vpn_png_start[]    asm("_binary_2_logo_mullvad_vpn_png_start");
+extern const uint8_t logo2_s_unit_png_start[]         asm("_binary_2_logo_s_unit_png_start");
+extern const uint8_t logo2_secura_png_start[]         asm("_binary_2_logo_secura_png_start");
+extern const uint8_t logo2_teamblue_png_start[]       asm("_binary_2_logo_teamblue_png_start");
+extern const uint8_t logo3_stegen_png_start[]         asm("_binary_3_logo_stegen_png_start");
+extern const uint8_t logo3_access42_png_start[]       asm("_binary_3_logo_access42_png_start");
+extern const uint8_t logo3_at_computing_png_start[]   asm("_binary_3_logo_at_computing_png_start");
+extern const uint8_t logo3_zerocopter_png_start[]     asm("_binary_3_logo_zerocopter_png_start");
 
-extern const uint8_t logo1_adyen_png_end[]        asm("_binary_1_logo_adyen_png_end");
-extern const uint8_t logo1_computest_png_end[]    asm("_binary_1_logo_computest_png_end");
-extern const uint8_t logo1_deloitte_png_end[]     asm("_binary_1_logo_deloitte_png_end");
-extern const uint8_t logo2_mullvad_vpn_png_end[]  asm("_binary_2_logo_mullvad_vpn_png_end");
-extern const uint8_t logo2_secura_png_end[]       asm("_binary_2_logo_secura_png_end");
-extern const uint8_t logo3_stegen_png_end[]       asm("_binary_3_logo_stegen_png_end");
-extern const uint8_t logo3_access42_png_end[]     asm("_binary_3_logo_access42_png_end");
-extern const uint8_t logo3_at_computing_png_end[] asm("_binary_3_logo_at_computing_png_end");
-extern const uint8_t logo3_zerocopter_png_end[]   asm("_binary_3_logo_zerocopter_png_end");
+extern const uint8_t logo1_adyen_png_end[]          asm("_binary_1_logo_adyen_png_end");
+extern const uint8_t logo1_computest_png_end[]      asm("_binary_1_logo_computest_png_end");
+extern const uint8_t logo1_deloitte_png_end[]       asm("_binary_1_logo_deloitte_png_end");
+extern const uint8_t logo1_schubergphilis_png_end[] asm("_binary_1_logo_schubergphilis_png_end");
+extern const uint8_t logo2_mullvad_vpn_png_end[]    asm("_binary_2_logo_mullvad_vpn_png_end");
+extern const uint8_t logo2_s_unit_png_end[]         asm("_binary_2_logo_s_unit_png_end");
+extern const uint8_t logo2_secura_png_end[]         asm("_binary_2_logo_secura_png_end");
+extern const uint8_t logo2_teamblue_png_end[]       asm("_binary_2_logo_teamblue_png_end");
+extern const uint8_t logo3_stegen_png_end[]         asm("_binary_3_logo_stegen_png_end");
+extern const uint8_t logo3_access42_png_end[]       asm("_binary_3_logo_access42_png_end");
+extern const uint8_t logo3_at_computing_png_end[]   asm("_binary_3_logo_at_computing_png_end");
+extern const uint8_t logo3_zerocopter_png_end[]     asm("_binary_3_logo_zerocopter_png_end");
 
 const void *start_regions[] = {
     logo1_adyen_png_start,
     logo1_computest_png_start,
     logo1_deloitte_png_start,
+    logo1_schubergphilis_png_start,
     logo2_mullvad_vpn_png_start,
+    logo2_s_unit_png_start,
     logo2_secura_png_start,
+    logo2_teamblue_png_start,
     logo3_stegen_png_start,
     logo3_access42_png_start,
     logo3_at_computing_png_start,
@@ -56,8 +66,11 @@ const void *end_regions[] = {
     logo1_adyen_png_end,
     logo1_computest_png_end,
     logo1_deloitte_png_end,
+    logo1_schubergphilis_png_end,
     logo2_mullvad_vpn_png_end,
+    logo2_s_unit_png_end,
     logo2_secura_png_end,
+    logo2_teamblue_png_end,
     logo3_stegen_png_end,
     logo3_access42_png_end,
     logo3_at_computing_png_end,
@@ -97,7 +110,7 @@ void app_main() {
     memset(ledinar, 255, sizeof(ledinar));
     esp_err_t res = ws2812_init(GPIO_LED_DATA);
     if (res) ESP_LOGE(TAG, "LED error: %s", esp_err_to_name(res));
-    res = ws2812_send_data(ledinal, sizeof(ledinar));
+    res = ws2812_send_data(ledinar, sizeof(ledinar));
     if (res) ESP_LOGE(TAG, "LED error: %s", esp_err_to_name(res));
     
     // Init NVS.
