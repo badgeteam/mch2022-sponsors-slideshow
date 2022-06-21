@@ -96,6 +96,9 @@ void app_main() {
     uint8_t ledinar[15];
     memset(ledinar, 255, sizeof(ledinar));
     esp_err_t res = ws2812_init(GPIO_LED_DATA);
+    if (res) ESP_LOGE(TAG, "LED error: %s", esp_err_to_name(res));
+    res = ws2812_send_data(ledinal, sizeof(ledinar));
+    if (res) ESP_LOGE(TAG, "LED error: %s", esp_err_to_name(res));
     
     // Init NVS.
     nvs_flash_init();
