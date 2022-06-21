@@ -6,4 +6,4 @@
 #pragma once
 
 void disp_flush();
-void display_logo(const void *start, const void *end, char *text);
+void display_logo(const void *start, const void *end);

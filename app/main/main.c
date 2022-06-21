@@ -21,6 +21,126 @@ xQueueHandle buttonQueue;
 
 static const char *TAG = "spon";
 
+extern const uint8_t animation_frame_1_png_start[]  asm("_binary_animation_frame_1_png_start");
+extern const uint8_t animation_frame_2_png_start[]  asm("_binary_animation_frame_2_png_start");
+extern const uint8_t animation_frame_3_png_start[]  asm("_binary_animation_frame_3_png_start");
+extern const uint8_t animation_frame_4_png_start[]  asm("_binary_animation_frame_4_png_start");
+extern const uint8_t animation_frame_5_png_start[]  asm("_binary_animation_frame_5_png_start");
+extern const uint8_t animation_frame_6_png_start[]  asm("_binary_animation_frame_6_png_start");
+extern const uint8_t animation_frame_7_png_start[]  asm("_binary_animation_frame_7_png_start");
+extern const uint8_t animation_frame_8_png_start[]  asm("_binary_animation_frame_8_png_start");
+extern const uint8_t animation_frame_9_png_start[]  asm("_binary_animation_frame_9_png_start");
+extern const uint8_t animation_frame_10_png_start[] asm("_binary_animation_frame_10_png_start");
+extern const uint8_t animation_frame_11_png_start[] asm("_binary_animation_frame_11_png_start");
+extern const uint8_t animation_frame_12_png_start[] asm("_binary_animation_frame_12_png_start");
+extern const uint8_t animation_frame_13_png_start[] asm("_binary_animation_frame_13_png_start");
+extern const uint8_t animation_frame_14_png_start[] asm("_binary_animation_frame_14_png_start");
+extern const uint8_t animation_frame_15_png_start[] asm("_binary_animation_frame_15_png_start");
+extern const uint8_t animation_frame_16_png_start[] asm("_binary_animation_frame_16_png_start");
+extern const uint8_t animation_frame_17_png_start[] asm("_binary_animation_frame_17_png_start");
+extern const uint8_t animation_frame_18_png_start[] asm("_binary_animation_frame_18_png_start");
+extern const uint8_t animation_frame_19_png_start[] asm("_binary_animation_frame_19_png_start");
+extern const uint8_t animation_frame_20_png_start[] asm("_binary_animation_frame_20_png_start");
+extern const uint8_t animation_frame_21_png_start[] asm("_binary_animation_frame_21_png_start");
+extern const uint8_t animation_frame_22_png_start[] asm("_binary_animation_frame_22_png_start");
+extern const uint8_t animation_frame_23_png_start[] asm("_binary_animation_frame_23_png_start");
+extern const uint8_t animation_frame_24_png_start[] asm("_binary_animation_frame_24_png_start");
+extern const uint8_t animation_frame_25_png_start[] asm("_binary_animation_frame_25_png_start");
+extern const uint8_t animation_frame_26_png_start[] asm("_binary_animation_frame_26_png_start");
+extern const uint8_t animation_frame_27_png_start[] asm("_binary_animation_frame_27_png_start");
+extern const uint8_t animation_frame_28_png_start[] asm("_binary_animation_frame_28_png_start");
+
+extern const uint8_t animation_frame_1_png_end[]  asm("_binary_animation_frame_1_png_end");
+extern const uint8_t animation_frame_2_png_end[]  asm("_binary_animation_frame_2_png_end");
+extern const uint8_t animation_frame_3_png_end[]  asm("_binary_animation_frame_3_png_end");
+extern const uint8_t animation_frame_4_png_end[]  asm("_binary_animation_frame_4_png_end");
+extern const uint8_t animation_frame_5_png_end[]  asm("_binary_animation_frame_5_png_end");
+extern const uint8_t animation_frame_6_png_end[]  asm("_binary_animation_frame_6_png_end");
+extern const uint8_t animation_frame_7_png_end[]  asm("_binary_animation_frame_7_png_end");
+extern const uint8_t animation_frame_8_png_end[]  asm("_binary_animation_frame_8_png_end");
+extern const uint8_t animation_frame_9_png_end[]  asm("_binary_animation_frame_9_png_end");
+extern const uint8_t animation_frame_10_png_end[] asm("_binary_animation_frame_10_png_end");
+extern const uint8_t animation_frame_11_png_end[] asm("_binary_animation_frame_11_png_end");
+extern const uint8_t animation_frame_12_png_end[] asm("_binary_animation_frame_12_png_end");
+extern const uint8_t animation_frame_13_png_end[] asm("_binary_animation_frame_13_png_end");
+extern const uint8_t animation_frame_14_png_end[] asm("_binary_animation_frame_14_png_end");
+extern const uint8_t animation_frame_15_png_end[] asm("_binary_animation_frame_15_png_end");
+extern const uint8_t animation_frame_16_png_end[] asm("_binary_animation_frame_16_png_end");
+extern const uint8_t animation_frame_17_png_end[] asm("_binary_animation_frame_17_png_end");
+extern const uint8_t animation_frame_18_png_end[] asm("_binary_animation_frame_18_png_end");
+extern const uint8_t animation_frame_19_png_end[] asm("_binary_animation_frame_19_png_end");
+extern const uint8_t animation_frame_20_png_end[] asm("_binary_animation_frame_20_png_end");
+extern const uint8_t animation_frame_21_png_end[] asm("_binary_animation_frame_21_png_end");
+extern const uint8_t animation_frame_22_png_end[] asm("_binary_animation_frame_22_png_end");
+extern const uint8_t animation_frame_23_png_end[] asm("_binary_animation_frame_23_png_end");
+extern const uint8_t animation_frame_24_png_end[] asm("_binary_animation_frame_24_png_end");
+extern const uint8_t animation_frame_25_png_end[] asm("_binary_animation_frame_25_png_end");
+extern const uint8_t animation_frame_26_png_end[] asm("_binary_animation_frame_26_png_end");
+extern const uint8_t animation_frame_27_png_end[] asm("_binary_animation_frame_27_png_end");
+extern const uint8_t animation_frame_28_png_end[] asm("_binary_animation_frame_28_png_end");
+
+const void *anim_start_regions[] = {
+    animation_frame_1_png_start,
+    animation_frame_2_png_start,
+    animation_frame_3_png_start,
+    animation_frame_4_png_start,
+    animation_frame_5_png_start,
+    animation_frame_6_png_start,
+    animation_frame_7_png_start,
+    animation_frame_8_png_start,
+    animation_frame_9_png_start,
+    animation_frame_10_png_start,
+    animation_frame_11_png_start,
+    animation_frame_12_png_start,
+    animation_frame_13_png_start,
+    animation_frame_14_png_start,
+    animation_frame_15_png_start,
+    animation_frame_16_png_start,
+    animation_frame_17_png_start,
+    animation_frame_18_png_start,
+    animation_frame_19_png_start,
+    animation_frame_20_png_start,
+    animation_frame_21_png_start,
+    animation_frame_22_png_start,
+    animation_frame_23_png_start,
+    animation_frame_24_png_start,
+    animation_frame_25_png_start,
+    animation_frame_26_png_start,
+    animation_frame_27_png_start,
+    animation_frame_28_png_start,
+};
+
+const void *anim_end_regions[] = {
+    animation_frame_1_png_end,
+    animation_frame_2_png_end,
+    animation_frame_3_png_end,
+    animation_frame_4_png_end,
+    animation_frame_5_png_end,
+    animation_frame_6_png_end,
+    animation_frame_7_png_end,
+    animation_frame_8_png_end,
+    animation_frame_9_png_end,
+    animation_frame_10_png_end,
+    animation_frame_11_png_end,
+    animation_frame_12_png_end,
+    animation_frame_13_png_end,
+    animation_frame_14_png_end,
+    animation_frame_15_png_end,
+    animation_frame_16_png_end,
+    animation_frame_17_png_end,
+    animation_frame_18_png_end,
+    animation_frame_19_png_end,
+    animation_frame_20_png_end,
+    animation_frame_21_png_end,
+    animation_frame_22_png_end,
+    animation_frame_23_png_end,
+    animation_frame_24_png_end,
+    animation_frame_25_png_end,
+    animation_frame_26_png_end,
+    animation_frame_27_png_end,
+    animation_frame_28_png_end,
+};
+
 extern const uint8_t logo1_adyen_png_start[]          asm("_binary_1_logo_adyen_png_start");
 extern const uint8_t logo1_computest_png_start[]      asm("_binary_1_logo_computest_png_start");
 extern const uint8_t logo1_deloitte_png_start[]       asm("_binary_1_logo_deloitte_png_start");
@@ -47,7 +167,7 @@ extern const uint8_t logo3_access42_png_end[]       asm("_binary_3_logo_access42
 extern const uint8_t logo3_at_computing_png_end[]   asm("_binary_3_logo_at_computing_png_end");
 extern const uint8_t logo3_zerocopter_png_end[]     asm("_binary_3_logo_zerocopter_png_end");
 
-const void *start_regions[] = {
+const void *event_start_regions[] = {
     logo1_adyen_png_start,
     logo1_computest_png_start,
     logo1_deloitte_png_start,
@@ -62,7 +182,7 @@ const void *start_regions[] = {
     logo3_zerocopter_png_start,
 };
 
-const void *end_regions[] = {
+const void *event_end_regions[] = {
     logo1_adyen_png_end,
     logo1_computest_png_end,
     logo1_deloitte_png_end,
@@ -77,7 +197,8 @@ const void *end_regions[] = {
     logo3_zerocopter_png_end,
 };
 
-const size_t num_logos = sizeof(start_regions) / sizeof(const void *);
+const size_t num_anim  = sizeof(anim_start_regions) / sizeof(const void *);
+const size_t num_event = sizeof(event_start_regions) / sizeof(const void *);
 
 #define IMAGE_TIME pdMS_TO_TICKS(500)
 
@@ -85,14 +206,9 @@ void disp_flush() {
     ili9341_write(get_ili9341(), buf.buf);
 }
 
-void display_logo(const void *start, const void *end, char *text) {
+void display_logo(const void *start, const void *end) {
     size_t len = (size_t) end - (size_t) start;
     pax_decode_png_buf(&buf, (void *) start, len, buf.type, CODEC_FLAG_EXISTING);
-    if (text) {
-        pax_col_t col = pax_get_pixel(&buf, 0, 0) ^ 0x00ffffff;
-        col |= 0xff000000;
-        pax_draw_text(&buf, col, pax_get_font("saira regular"), 18, 10, 10, text);
-    }
     disp_flush();
 }
 
@@ -121,11 +237,18 @@ void app_main() {
     nvs_get_u8(handle, "sponsors", &has_watched);
     ESP_LOGI(TAG, "User has%s watched demo before.", has_watched ? "" : " not");
     
-    // Show ALL of them.
-    for (int i = 0; i < num_logos; i++) {
-        display_logo(start_regions[i], end_regions[i], NULL);
+    // Show the badger animation.
+    for (int i = 0; i < num_anim; i++) {
+        display_logo(anim_start_regions[i], anim_end_regions[i]);
+    }
+    
+    // Show the event sponsors.
+    for (int i = 0; i < num_event; i++) {
+        display_logo(event_start_regions[i], event_end_regions[i]);
         vTaskDelay(pdMS_TO_TICKS(500));
     }
+    
+    // TODO: Show hardware sponsors.
     
     // Set an NVS variable.
     nvs_set_u8(handle, "sponsors", 1);
