@@ -148,7 +148,7 @@ extern const uint8_t logo1_schubergphilis_png_start[] asm("_binary_1_logo_schube
 extern const uint8_t logo2_mullvad_vpn_png_start[]    asm("_binary_2_logo_mullvad_vpn_png_start");
 extern const uint8_t logo2_s_unit_png_start[]         asm("_binary_2_logo_s_unit_png_start");
 extern const uint8_t logo2_secura_png_start[]         asm("_binary_2_logo_secura_png_start");
-extern const uint8_t logo2_teamblue_png_start[]       asm("_binary_2_logo_teamblue_png_start");
+extern const uint8_t logo2_transip_png_start[]       asm("_binary_2_logo_transip_png_start");
 extern const uint8_t logo3_stegen_png_start[]         asm("_binary_3_logo_stegen_png_start");
 extern const uint8_t logo3_access42_png_start[]       asm("_binary_3_logo_access42_png_start");
 extern const uint8_t logo3_at_computing_png_start[]   asm("_binary_3_logo_at_computing_png_start");
@@ -161,7 +161,7 @@ extern const uint8_t logo1_schubergphilis_png_end[] asm("_binary_1_logo_schuberg
 extern const uint8_t logo2_mullvad_vpn_png_end[]    asm("_binary_2_logo_mullvad_vpn_png_end");
 extern const uint8_t logo2_s_unit_png_end[]         asm("_binary_2_logo_s_unit_png_end");
 extern const uint8_t logo2_secura_png_end[]         asm("_binary_2_logo_secura_png_end");
-extern const uint8_t logo2_teamblue_png_end[]       asm("_binary_2_logo_teamblue_png_end");
+extern const uint8_t logo2_transip_png_end[]       asm("_binary_2_logo_transip_png_end");
 extern const uint8_t logo3_stegen_png_end[]         asm("_binary_3_logo_stegen_png_end");
 extern const uint8_t logo3_access42_png_end[]       asm("_binary_3_logo_access42_png_end");
 extern const uint8_t logo3_at_computing_png_end[]   asm("_binary_3_logo_at_computing_png_end");
@@ -175,7 +175,7 @@ const void *event_start_regions[] = {
     logo2_mullvad_vpn_png_start,
     logo2_s_unit_png_start,
     logo2_secura_png_start,
-    logo2_teamblue_png_start,
+    logo2_transip_png_start,
     logo3_stegen_png_start,
     logo3_access42_png_start,
     logo3_at_computing_png_start,
@@ -190,7 +190,7 @@ const void *event_end_regions[] = {
     logo2_mullvad_vpn_png_end,
     logo2_s_unit_png_end,
     logo2_secura_png_end,
-    logo2_teamblue_png_end,
+    logo2_transip_png_end,
     logo3_stegen_png_end,
     logo3_access42_png_end,
     logo3_at_computing_png_end,
