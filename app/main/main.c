@@ -228,6 +228,7 @@ const void *badge_end_regions[] = {
 const size_t num_anim  = sizeof(anim_start_regions)  / sizeof(const void *);
 const size_t num_event = sizeof(event_start_regions) / sizeof(const void *);
 const size_t num_badge = sizeof(badge_start_regions) / sizeof(const void *);
+static uint8_t has_watched = 0;
 
 #define EVENT_IMAGE_TIME pdMS_TO_TICKS(750)
 #define BADGE_IMAGE_TIME pdMS_TO_TICKS(750)
@@ -258,6 +259,15 @@ void display_progress(int part, int total) {
     }
 }
 
+// Displays the skip slideshow text, but only if it has been watched before.
+void skip_display() {
+    
+}
+// Allows exiting the slideshow, but only if it has been watched before.
+void skip_check(xQueueHandle buttonQueue, BaseType_t delay) {
+    vTaskDelay(delay);
+}
+
 void app_main() {
     // Init HW.
     bsp_init();
@@ -273,13 +283,16 @@ void app_main() {
     nvs_flash_init();
     nvs_handle_t handle;
     nvs_open("system", NVS_READWRITE, &handle);
-    uint8_t has_watched = 0;
+    has_watched = 0;
     nvs_get_u8(handle, "sponsors", &has_watched);
     ESP_LOGI(TAG, "User has%s watched demo before.", has_watched ? "" : " not");
     
     // Show the badger animation.
     for (int i = 0; i < num_anim; i++) {
         display_logo(anim_start_regions[i], anim_end_regions[i]);
+        // If the user has watched before, allow them to skip.
+        skip_display();
+        skip_check(buttonQueue, 0);
         disp_flush();
     }
     
@@ -288,8 +301,9 @@ void app_main() {
         display_logo(event_start_regions[i], event_end_regions[i]);
         // Show a progress bar so people know how long to expect.
         display_progress(i, num_event+num_badge);
+        skip_display();
         disp_flush();
-        vTaskDelay(EVENT_IMAGE_TIME);
+        skip_check(buttonQueue, EVENT_IMAGE_TIME);
     }
     
     // Show the badge sponsors.
@@ -297,8 +311,9 @@ void app_main() {
         display_logo(badge_start_regions[i], badge_end_regions[i]);
         // Show a progress bar so people know how long to expect.
         display_progress(num_event+i, num_event+num_badge);
+        skip_display();
         disp_flush();
-        vTaskDelay(BADGE_IMAGE_TIME);
+        skip_check(buttonQueue, BADGE_IMAGE_TIME);
     }
     
     // Done!
@@ -306,7 +321,7 @@ void app_main() {
     disp_flush();
     
     // Set an NVS variable.
-    nvs_set_u8(handle, "sponsors", 1);
+    nvs_set_u8(handle, "sponsors", 0);
     nvs_commit(handle);
     nvs_close(handle);
     
