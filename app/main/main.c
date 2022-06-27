@@ -321,7 +321,7 @@ void app_main() {
     disp_flush();
     
     // Set an NVS variable.
-    nvs_set_u8(handle, "sponsors", 0);
+    nvs_set_u8(handle, "sponsors", 1);
     nvs_commit(handle);
     nvs_close(handle);
     
