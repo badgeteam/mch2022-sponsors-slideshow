@@ -197,10 +197,40 @@ const void *event_end_regions[] = {
     logo3_zerocopter_png_end,
 };
 
-const size_t num_anim  = sizeof(anim_start_regions) / sizeof(const void *);
-const size_t num_event = sizeof(event_start_regions) / sizeof(const void *);
+extern const uint8_t logom_allnet_png_start[]       asm("_binary_m_logo_allnet_png_start");
+extern const uint8_t logom_bosch_png_start[]        asm("_binary_m_logo_bosch_png_start");
+extern const uint8_t logom_espressif_png_start[]    asm("_binary_m_logo_espressif_png_start");
+extern const uint8_t logom_lattice_png_start[]      asm("_binary_m_logo_lattice_png_start");
+extern const uint8_t logom_rpi_png_start[]          asm("_binary_m_logo_rpi_png_start");
 
-#define IMAGE_TIME pdMS_TO_TICKS(750)
+extern const uint8_t logom_allnet_png_end[]       asm("_binary_m_logo_allnet_png_end");
+extern const uint8_t logom_bosch_png_end[]        asm("_binary_m_logo_bosch_png_end");
+extern const uint8_t logom_espressif_png_end[]    asm("_binary_m_logo_espressif_png_end");
+extern const uint8_t logom_lattice_png_end[]      asm("_binary_m_logo_lattice_png_end");
+extern const uint8_t logom_rpi_png_end[]          asm("_binary_m_logo_rpi_png_end");
+
+const void *badge_start_regions[] = {
+    logom_allnet_png_start,
+    logom_bosch_png_start,
+    logom_espressif_png_start,
+    logom_lattice_png_start,
+    logom_rpi_png_start,
+};
+
+const void *badge_end_regions[] = {
+    logom_allnet_png_end,
+    logom_bosch_png_end,
+    logom_espressif_png_end,
+    logom_lattice_png_end,
+    logom_rpi_png_end,
+};
+
+const size_t num_anim  = sizeof(anim_start_regions)  / sizeof(const void *);
+const size_t num_event = sizeof(event_start_regions) / sizeof(const void *);
+const size_t num_badge = sizeof(badge_start_regions) / sizeof(const void *);
+
+#define EVENT_IMAGE_TIME pdMS_TO_TICKS(750)
+#define BADGE_IMAGE_TIME pdMS_TO_TICKS(750)
 
 // Updates the display with what's been drawn.
 void disp_flush() {
@@ -257,21 +287,28 @@ void app_main() {
     for (int i = 0; i < num_event; i++) {
         display_logo(event_start_regions[i], event_end_regions[i]);
         // Show a progress bar so people know how long to expect.
-        display_progress(i, num_event);
+        display_progress(i, num_event+num_badge);
         disp_flush();
-        vTaskDelay(IMAGE_TIME);
+        vTaskDelay(EVENT_IMAGE_TIME);
     }
     
-    // TODO: Show hardware sponsors.
+    // Show the badge sponsors.
+    for (int i = 0; i < num_event; i++) {
+        display_logo(badge_start_regions[i], badge_end_regions[i]);
+        // Show a progress bar so people know how long to expect.
+        display_progress(num_event+i, num_event+num_badge);
+        disp_flush();
+        vTaskDelay(BADGE_IMAGE_TIME);
+    }
+    
+    // Done!
+    pax_background(&buf, -1);
+    disp_flush();
     
     // Set an NVS variable.
     nvs_set_u8(handle, "sponsors", 1);
     nvs_commit(handle);
     nvs_close(handle);
-    
-    // Done!
-    pax_background(&buf, -1);
-    disp_flush();
     
     // Go to launcher.
     REG_WRITE(RTC_CNTL_STORE0_REG, 0);
