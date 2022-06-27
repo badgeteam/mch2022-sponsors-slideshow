@@ -200,7 +200,7 @@ const void *event_end_regions[] = {
 const size_t num_anim  = sizeof(anim_start_regions) / sizeof(const void *);
 const size_t num_event = sizeof(event_start_regions) / sizeof(const void *);
 
-#define IMAGE_TIME pdMS_TO_TICKS(500)
+#define IMAGE_TIME pdMS_TO_TICKS(750)
 
 // Updates the display with what's been drawn.
 void disp_flush() {
@@ -259,7 +259,7 @@ void app_main() {
         // Show a progress bar so people know how long to expect.
         display_progress(i, num_event);
         disp_flush();
-        vTaskDelay(pdMS_TO_TICKS(500));
+        vTaskDelay(IMAGE_TIME);
     }
     
     // TODO: Show hardware sponsors.
