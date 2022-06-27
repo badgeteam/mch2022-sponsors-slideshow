@@ -297,7 +297,11 @@ void app_main() {
     // Init GFX.
     pax_buf_init(&buf, NULL, 320, 240, PAX_BUF_16_565RGB);
     
-    // TODO: Power on LED region and show something on them.
+    // Power on LED region and show something on them.
+    uint8_t leds[15];
+    memset(leds, 255, sizeof(leds));
+    ws2812_init(GPIO_LED_DATA);
+    ws2812_send_data(leds, sizeof(leds));
     
     // Init NVS.
     nvs_flash_init();
