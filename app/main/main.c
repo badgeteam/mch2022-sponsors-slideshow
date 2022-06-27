@@ -246,13 +246,13 @@ void display_logo(const void *start, const void *end) {
 // Draws a progress bar on the bottom of the screen.
 void display_progress(int part, int total) {
     // Calculate spacing between dots.
-    float delta = buf.width / (total + 1);
+    float delta = (float) buf.width / total;
     // Draw dots.
-    float x     = delta;
+    float x     = (delta - 4) / 2;
     for (int i = 0; i < total; i++) {
         // Make the dot darker when it's selected.
-        pax_col_t color = part == i ? 0xff000000 : 0xffa0a0a0;
-        pax_draw_circle(&buf, color, x, buf.height - 10, 4);
+        pax_col_t color = part == i ? 0xff000000 : 0xffc0c0c0;
+        pax_draw_rect(&buf, color, x, buf.height - 10, 4, 4);
         // Move to the next dot's position.
         x += delta;
     }
