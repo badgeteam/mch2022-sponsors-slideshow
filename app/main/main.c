@@ -293,7 +293,7 @@ void app_main() {
     }
     
     // Show the badge sponsors.
-    for (int i = 0; i < num_event; i++) {
+    for (int i = 0; i < num_badge; i++) {
         display_logo(badge_start_regions[i], badge_end_regions[i]);
         // Show a progress bar so people know how long to expect.
         display_progress(num_event+i, num_event+num_badge);
