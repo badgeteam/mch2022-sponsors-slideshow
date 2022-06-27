@@ -297,11 +297,14 @@ void app_main() {
     // Init GFX.
     pax_buf_init(&buf, NULL, 320, 240, PAX_BUF_16_565RGB);
     
-    // Power on LED region and show something on them.
-    uint8_t leds[15];
-    memset(leds, 255, sizeof(leds));
+    // Power on LED region.
+    leds_t leds;
+    memset(&leds, 0, sizeof(leds));
+    gpio_set_direction(GPIO_SD_PWR, GPIO_MODE_OUTPUT);
+    gpio_set_level(GPIO_SD_PWR, true);
+    // Init LEDs to off.
     ws2812_init(GPIO_LED_DATA);
-    ws2812_send_data(leds, sizeof(leds));
+    ws2812_send_data(leds.raw, sizeof(leds));
     
     // Init NVS.
     nvs_flash_init();
@@ -318,6 +321,24 @@ void app_main() {
         skip_display();
         skip_check(buttonQueue, 0);
         disp_flush();
+        // On frames 23 -> 27, show something on the leds.
+        if (i >= 23) {
+            int part0 = 127 * (i - 22) / 5;
+            uint8_t part = part0;
+            
+            // Center of the kite: green.
+            leds.leds[0].green = part;
+            // Left of the kite: red.
+            leds.leds[1].red   = part;
+            // Top of the kit: blue.
+            leds.leds[2].blue  = part;
+            // Right of the kite: yellow.
+            leds.leds[3].red   = part;
+            leds.leds[3].green = part;
+            // Bottom of the kite: blue.
+            leds.leds[4].blue  = part;
+            ws2812_send_data(leds.raw, sizeof(leds));
+        }
     }
     
     // Show the event sponsors.
