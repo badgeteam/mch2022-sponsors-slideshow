@@ -40,7 +40,7 @@ idf_component_register(
     EMBED_FILES ${project_dir}/mch2022-sponsors/logos/2_logo_mullvad_vpn.png
     EMBED_FILES ${project_dir}/mch2022-sponsors/logos/2_logo_s-unit.png
     EMBED_FILES ${project_dir}/mch2022-sponsors/logos/2_logo_secura.png
-    EMBED_FILES ${project_dir}/mch2022-sponsors/logos/2_logo_teamblue.png
+    EMBED_FILES ${project_dir}/mch2022-sponsors/logos/2_logo_transip.png
     EMBED_FILES ${project_dir}/mch2022-sponsors/logos/3_logo_stegen.png
     EMBED_FILES ${project_dir}/mch2022-sponsors/logos/3_logo_access42.png
     EMBED_FILES ${project_dir}/mch2022-sponsors/logos/3_logo_at_computing.png
