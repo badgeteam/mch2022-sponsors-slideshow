@@ -261,11 +261,31 @@ void display_progress(int part, int total) {
 
 // Displays the skip slideshow text, but only if it has been watched before.
 void skip_display() {
-    
+    if (has_watched) {
+        const pax_font_t *font = pax_get_font("saira regular");
+        pax_draw_text(&buf, 0xff000000, font, 18, 5, 5, "Press [HOME] to skip.");
+    }
 }
+
 // Allows exiting the slideshow, but only if it has been watched before.
 void skip_check(xQueueHandle buttonQueue, BaseType_t delay) {
-    vTaskDelay(delay);
+    if (has_watched) {
+        BaseType_t time = pdMS_TO_TICKS(esp_timer_get_time() / 1000);
+        BaseType_t end  = time + delay;
+        do {
+            rp2040_input_message_t msg;
+            if (xQueueReceive(buttonQueue, &msg, end - time)
+                && msg.input == RP2040_INPUT_BUTTON_HOME && msg.state) {
+                // Go to launcher.
+                REG_WRITE(RTC_CNTL_STORE0_REG, 0);
+                esp_restart();
+            }
+            
+            time = pdMS_TO_TICKS(esp_timer_get_time() / 1000);
+        } while (time < end);
+    } else {
+        vTaskDelay(delay);
+    }
 }
 
 void app_main() {
