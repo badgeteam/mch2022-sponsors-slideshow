@@ -159,8 +159,8 @@ extern const uint8_t logo1_adyen_png_end[]          asm("_binary_1_logo_adyen_pn
 extern const uint8_t logo1_computest_png_end[]      asm("_binary_1_logo_computest_png_end");
 extern const uint8_t logo1_deloitte_png_end[]       asm("_binary_1_logo_deloitte_png_end");
 extern const uint8_t logo1_schubergphilis_png_end[] asm("_binary_1_logo_schubergphilis_png_end");
-extern const uint8_t logo2_s_rm_png_start[]           asm("_binary_2_logo_s_rm_png_start");
 extern const uint8_t logo2_mullvad_vpn_png_end[]    asm("_binary_2_logo_mullvad_vpn_png_end");
+extern const uint8_t logo2_s_rm_png_end[]           asm("_binary_2_logo_s_rm_png_end");
 extern const uint8_t logo2_s_unit_png_end[]         asm("_binary_2_logo_s_unit_png_end");
 extern const uint8_t logo2_secura_png_end[]         asm("_binary_2_logo_secura_png_end");
 extern const uint8_t logo2_transip_png_end[]        asm("_binary_2_logo_transip_png_end");
@@ -302,13 +302,13 @@ void app_main() {
     pax_buf_init(&buf, NULL, 320, 240, PAX_BUF_16_565RGB);
     
     // Power on LED region.
-    leds_t leds;
+    uint8_t leds[15];
     memset(&leds, 0, sizeof(leds));
     gpio_set_direction(GPIO_SD_PWR, GPIO_MODE_OUTPUT);
     gpio_set_level(GPIO_SD_PWR, true);
     // Init LEDs to off.
     ws2812_init(GPIO_LED_DATA);
-    ws2812_send_data(leds.raw, sizeof(leds));
+    ws2812_send_data(leds, sizeof(leds));
     
     // Init NVS.
     nvs_flash_init();
@@ -330,6 +330,7 @@ void app_main() {
             int part0 = 127 * (i - 22) / 5;
             uint8_t part = part0;
             
+            /*
             // Center of the kite: green.
             leds.leds[0].green = part;
             // Left of the kite: red.
@@ -341,7 +342,22 @@ void app_main() {
             leds.leds[3].green = part;
             // Bottom of the kite: blue.
             leds.leds[4].blue  = part;
-            ws2812_send_data(leds.raw, sizeof(leds));
+            */
+            
+            // Center of the kite: green.
+            leds[3*0 + 1] = part;
+            // Left of the kite: red.
+            leds[3*1 + 0] = part;
+            // Top of the kit: blue.
+            leds[3*2 + 2]  = part;
+            // Right of the kite: yellow.
+            leds[3*3 + 0] = part;
+            leds[3*3 + 1] = part;
+            // Bottom of the kite: blue.
+            leds[3*4 + 2] = part;
+            
+            // TODO
+            // ws2812_send_data(leds, sizeof(leds));
         }
     }
     

@@ -8,6 +8,7 @@
 
 #pragma once
 
+__attribute__((packed))
 typedef union {
     uint8_t arr[3];
     struct {
@@ -17,6 +18,7 @@ typedef union {
     };
 } led_t;
 
+__attribute__((packed))
 typedef union {
     uint8_t raw[15];
     led_t   leds[5];
