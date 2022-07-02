@@ -146,6 +146,7 @@ extern const uint8_t logo1_computest_png_start[]      asm("_binary_1_logo_comput
 extern const uint8_t logo1_deloitte_png_start[]       asm("_binary_1_logo_deloitte_png_start");
 extern const uint8_t logo1_schubergphilis_png_start[] asm("_binary_1_logo_schubergphilis_png_start");
 extern const uint8_t logo2_mullvad_vpn_png_start[]    asm("_binary_2_logo_mullvad_vpn_png_start");
+extern const uint8_t logo2_s_rm_png_start[]           asm("_binary_2_logo_s_rm_png_start");
 extern const uint8_t logo2_s_unit_png_start[]         asm("_binary_2_logo_s_unit_png_start");
 extern const uint8_t logo2_secura_png_start[]         asm("_binary_2_logo_secura_png_start");
 extern const uint8_t logo2_transip_png_start[]        asm("_binary_2_logo_transip_png_start");
@@ -158,6 +159,7 @@ extern const uint8_t logo1_adyen_png_end[]          asm("_binary_1_logo_adyen_pn
 extern const uint8_t logo1_computest_png_end[]      asm("_binary_1_logo_computest_png_end");
 extern const uint8_t logo1_deloitte_png_end[]       asm("_binary_1_logo_deloitte_png_end");
 extern const uint8_t logo1_schubergphilis_png_end[] asm("_binary_1_logo_schubergphilis_png_end");
+extern const uint8_t logo2_s_rm_png_start[]           asm("_binary_2_logo_s_rm_png_start");
 extern const uint8_t logo2_mullvad_vpn_png_end[]    asm("_binary_2_logo_mullvad_vpn_png_end");
 extern const uint8_t logo2_s_unit_png_end[]         asm("_binary_2_logo_s_unit_png_end");
 extern const uint8_t logo2_secura_png_end[]         asm("_binary_2_logo_secura_png_end");
@@ -173,6 +175,7 @@ const void *event_start_regions[] = {
     logo1_deloitte_png_start,
     logo1_schubergphilis_png_start,
     logo2_mullvad_vpn_png_start,
+    logo2_s_rm_png_start,
     logo2_s_unit_png_start,
     logo2_secura_png_start,
     logo2_transip_png_start,
@@ -188,6 +191,7 @@ const void *event_end_regions[] = {
     logo1_deloitte_png_end,
     logo1_schubergphilis_png_end,
     logo2_mullvad_vpn_png_end,
+    logo2_s_rm_png_end,
     logo2_s_unit_png_end,
     logo2_secura_png_end,
     logo2_transip_png_end,
@@ -230,8 +234,8 @@ const size_t num_event = sizeof(event_start_regions) / sizeof(const void *);
 const size_t num_badge = sizeof(badge_start_regions) / sizeof(const void *);
 static uint8_t has_watched = 0;
 
-#define EVENT_IMAGE_TIME pdMS_TO_TICKS(750)
-#define BADGE_IMAGE_TIME pdMS_TO_TICKS(750)
+#define EVENT_IMAGE_TIME pdMS_TO_TICKS(500)
+#define BADGE_IMAGE_TIME pdMS_TO_TICKS(500)
 
 // Updates the display with what's been drawn.
 void disp_flush() {

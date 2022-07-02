@@ -38,6 +38,7 @@ idf_component_register(
     EMBED_FILES ${project_dir}/mch2022-sponsors/logos/1_logo_deloitte.png
     EMBED_FILES ${project_dir}/mch2022-sponsors/logos/1_logo_schubergphilis.png
     EMBED_FILES ${project_dir}/mch2022-sponsors/logos/2_logo_mullvad_vpn.png
+    EMBED_FILES ${project_dir}/mch2022-sponsors/logos/2_logo_s_rm.png
     EMBED_FILES ${project_dir}/mch2022-sponsors/logos/2_logo_s-unit.png
     EMBED_FILES ${project_dir}/mch2022-sponsors/logos/2_logo_secura.png
     EMBED_FILES ${project_dir}/mch2022-sponsors/logos/2_logo_transip.png
@@ -45,10 +46,10 @@ idf_component_register(
     EMBED_FILES ${project_dir}/mch2022-sponsors/logos/3_logo_access42.png
     EMBED_FILES ${project_dir}/mch2022-sponsors/logos/3_logo_at_computing.png
     EMBED_FILES ${project_dir}/mch2022-sponsors/logos/3_logo_zerocopter.png
+    # Hardware sponsors.
     EMBED_FILES ${project_dir}/mch2022-sponsors/logos/m_logo_allnet.png
     EMBED_FILES ${project_dir}/mch2022-sponsors/logos/m_logo_bosch.png
     EMBED_FILES ${project_dir}/mch2022-sponsors/logos/m_logo_espressif.png
     EMBED_FILES ${project_dir}/mch2022-sponsors/logos/m_logo_lattice.png
     EMBED_FILES ${project_dir}/mch2022-sponsors/logos/m_logo_rpi.png
-    # Hardware sponsors.
 )
