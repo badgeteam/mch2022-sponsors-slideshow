@@ -250,8 +250,8 @@ const size_t num_event = sizeof(event_start_regions) / sizeof(const void *);
 const size_t num_badge = sizeof(badge_start_regions) / sizeof(const void *);
 static uint8_t has_watched = 0;
 
-#define EVENT_IMAGE_TIME pdMS_TO_TICKS(500)
-#define BADGE_IMAGE_TIME pdMS_TO_TICKS(500)
+#define EVENT_IMAGE_TIME pdMS_TO_TICKS(1000)
+#define BADGE_IMAGE_TIME pdMS_TO_TICKS(1000)
 
 // Updates the display with what's been drawn.
 void disp_flush() {
