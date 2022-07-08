@@ -346,20 +346,6 @@ void app_main() {
             int part0 = 127 * (i - 22) / 5;
             uint8_t part = part0;
             
-            /*
-            // Center of the kite: green.
-            leds.leds[0].green = part;
-            // Left of the kite: red.
-            leds.leds[1].red   = part;
-            // Top of the kit: blue.
-            leds.leds[2].blue  = part;
-            // Right of the kite: yellow.
-            leds.leds[3].red   = part;
-            leds.leds[3].green = part;
-            // Bottom of the kite: blue.
-            leds.leds[4].blue  = part;
-            */
-            
             // Center of the kite: green.
             leds[3*0 + 1] = part;
             // Left of the kite: red.
@@ -372,8 +358,8 @@ void app_main() {
             // Bottom of the kite: blue.
             leds[3*4 + 2] = part;
             
-            // TODO
-            // ws2812_send_data(leds, sizeof(leds));
+            // Send the LED data.
+            ws2812_send_data(leds, sizeof(leds));
         }
     }
     
