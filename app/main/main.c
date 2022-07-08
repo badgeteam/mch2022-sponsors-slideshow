@@ -282,8 +282,8 @@ void display_progress(int part, int total) {
 // Displays the skip slideshow text, but only if it has been watched before.
 void skip_display() {
     if (has_watched) {
-        const pax_font_t *font = pax_get_font("saira regular");
-        pax_draw_text(&buf, 0xff000000, font, 18, 5, 5, "Press [HOME] to skip.");
+        const pax_font_t *font = pax_font_saira_regular;
+        pax_draw_text(&buf, 0xff000000, font, 18, 5, 5, "Press 🅷 to skip.");
     }
 }
 
