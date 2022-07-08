@@ -145,76 +145,76 @@ extern const uint8_t logo1_adyen_png_start[]          asm("_binary_1_logo_adyen_
 extern const uint8_t logo1_computest_png_start[]      asm("_binary_1_logo_computest_png_start");
 extern const uint8_t logo1_deloitte_png_start[]       asm("_binary_1_logo_deloitte_png_start");
 extern const uint8_t logo2_db_png_start[]             asm("_binary_2_logo_db_png_start");
-extern const uint8_t logo2_schubergphilis_png_start[] asm("_binary_2_logo_schubergphilis_png_start");
 extern const uint8_t logo2_mullvad_vpn_png_start[]    asm("_binary_2_logo_mullvad_vpn_png_start");
 extern const uint8_t logo2_secura_png_start[]         asm("_binary_2_logo_secura_png_start");
+extern const uint8_t logo2_schubergphilis_png_start[] asm("_binary_2_logo_schubergphilis_png_start");
 extern const uint8_t logo2_true_png_start[]           asm("_binary_2_logo_true_png_start");
-extern const uint8_t logo3_s_rm_png_start[]           asm("_binary_3_logo_s_rm_png_start");
-extern const uint8_t logo3_s_unit_png_start[]         asm("_binary_3_logo_s_unit_png_start");
-extern const uint8_t logo3_transip_png_start[]        asm("_binary_3_logo_transip_png_start");
-extern const uint8_t logo3_stegen_png_start[]         asm("_binary_3_logo_stegen_png_start");
+extern const uint8_t logo3_a2b_kuc_png_start[]        asm("_binary_3_logo_a2b_kuc_png_start");
 extern const uint8_t logo3_access42_png_start[]       asm("_binary_3_logo_access42_png_start");
 extern const uint8_t logo3_at_computing_png_start[]   asm("_binary_3_logo_at_computing_png_start");
 extern const uint8_t logo3_protagio_png_start[]       asm("_binary_3_logo_protagio_png_start");
+extern const uint8_t logo3_s_rm_png_start[]           asm("_binary_3_logo_s_rm_png_start");
+extern const uint8_t logo3_s_unit_png_start[]         asm("_binary_3_logo_s_unit_png_start");
+extern const uint8_t logo3_stegen_png_start[]         asm("_binary_3_logo_stegen_png_start");
+extern const uint8_t logo3_transip_png_start[]        asm("_binary_3_logo_transip_png_start");
 extern const uint8_t logo3_zerocopter_png_start[]     asm("_binary_3_logo_zerocopter_png_start");
-extern const uint8_t logo3_a2b_kuc_png_start[]        asm("_binary_3_logo_a2b_kuc_png_start");
 
 extern const uint8_t logo1_adyen_png_end[]          asm("_binary_1_logo_adyen_png_end");
 extern const uint8_t logo1_computest_png_end[]      asm("_binary_1_logo_computest_png_end");
 extern const uint8_t logo1_deloitte_png_end[]       asm("_binary_1_logo_deloitte_png_end");
 extern const uint8_t logo2_db_png_end[]             asm("_binary_2_logo_db_png_end");
-extern const uint8_t logo2_schubergphilis_png_end[] asm("_binary_2_logo_schubergphilis_png_end");
 extern const uint8_t logo2_mullvad_vpn_png_end[]    asm("_binary_2_logo_mullvad_vpn_png_end");
 extern const uint8_t logo2_secura_png_end[]         asm("_binary_2_logo_secura_png_end");
+extern const uint8_t logo2_schubergphilis_png_end[] asm("_binary_2_logo_schubergphilis_png_end");
 extern const uint8_t logo2_true_png_end[]           asm("_binary_2_logo_true_png_end");
-extern const uint8_t logo3_s_rm_png_end[]           asm("_binary_3_logo_s_rm_png_end");
-extern const uint8_t logo3_s_unit_png_end[]         asm("_binary_3_logo_s_unit_png_end");
-extern const uint8_t logo3_transip_png_end[]        asm("_binary_3_logo_transip_png_end");
-extern const uint8_t logo3_stegen_png_end[]         asm("_binary_3_logo_stegen_png_end");
+extern const uint8_t logo3_a2b_kuc_png_end[]        asm("_binary_3_logo_a2b_kuc_png_end");
 extern const uint8_t logo3_access42_png_end[]       asm("_binary_3_logo_access42_png_end");
 extern const uint8_t logo3_at_computing_png_end[]   asm("_binary_3_logo_at_computing_png_end");
 extern const uint8_t logo3_protagio_png_end[]       asm("_binary_3_logo_protagio_png_end");
+extern const uint8_t logo3_s_rm_png_end[]           asm("_binary_3_logo_s_rm_png_end");
+extern const uint8_t logo3_s_unit_png_end[]         asm("_binary_3_logo_s_unit_png_end");
+extern const uint8_t logo3_stegen_png_end[]         asm("_binary_3_logo_stegen_png_end");
+extern const uint8_t logo3_transip_png_end[]        asm("_binary_3_logo_transip_png_end");
 extern const uint8_t logo3_zerocopter_png_end[]     asm("_binary_3_logo_zerocopter_png_end");
-extern const uint8_t logo3_a2b_kuc_png_end[]        asm("_binary_3_logo_a2b_kuc_png_end");
 
 const void *event_start_regions[] = {
     logo1_adyen_png_start,
     logo1_computest_png_start,
     logo1_deloitte_png_start,
-    logo2_schubergphilis_png_start,
     logo2_db_png_start,
     logo2_mullvad_vpn_png_start,
     logo2_secura_png_start,
+    logo2_schubergphilis_png_start,
     logo2_true_png_start,
-    logo3_s_rm_png_start,
-    logo3_s_unit_png_start,
-    logo3_transip_png_start,
-    logo3_stegen_png_start,
+    logo3_a2b_kuc_png_start,
     logo3_access42_png_start,
     logo3_at_computing_png_start,
     logo3_protagio_png_start,
+    logo3_s_rm_png_start,
+    logo3_s_unit_png_start,
+    logo3_stegen_png_start,
+    logo3_transip_png_start,
     logo3_zerocopter_png_start,
-    logo3_a2b_kuc_png_start,
 };
 
 const void *event_end_regions[] = {
     logo1_adyen_png_end,
     logo1_computest_png_end,
     logo1_deloitte_png_end,
-    logo2_schubergphilis_png_end,
     logo2_db_png_end,
     logo2_mullvad_vpn_png_end,
     logo2_secura_png_end,
+    logo2_schubergphilis_png_end,
     logo2_true_png_end,
-    logo3_s_rm_png_end,
-    logo3_s_unit_png_end,
-    logo3_transip_png_end,
-    logo3_stegen_png_end,
+    logo3_a2b_kuc_png_end,
     logo3_access42_png_end,
     logo3_at_computing_png_end,
     logo3_protagio_png_end,
+    logo3_s_rm_png_end,
+    logo3_s_unit_png_end,
+    logo3_stegen_png_end,
+    logo3_transip_png_end,
     logo3_zerocopter_png_end,
-    logo3_a2b_kuc_png_end,
 };
 
 extern const uint8_t logom_allnet_png_start[]       asm("_binary_m_logo_allnet_png_start");
